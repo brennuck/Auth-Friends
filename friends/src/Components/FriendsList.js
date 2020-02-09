@@ -11,6 +11,10 @@ class FriendsList extends React.Component {
         this.getData();
     }
 
+    componentDidUpdate() {
+        this.addUser();
+    }
+
     getData = () => {
         axiosWithAuth()
         .get("/api/friends")
@@ -18,12 +22,28 @@ class FriendsList extends React.Component {
             this.setState({
                 friends: res.data
             })
-            console.log(this.state)
         })
         .catch(err => {
             console.log("ERR0R", err)
         })
     }
+
+    addUser = () => {
+        axiosWithAuth()
+        .post("/api/friends", {
+            id: Date.now(),
+            name: "Brennon",
+            age: "20",
+            email: "brennuck@gmail.com"
+        })
+        .then(res => {
+            console.log(res)
+        })
+        .catch(err => {
+            console.log("P0ST ERR0R", err)
+        })
+    }
+
     render() {
         return (
             <div>
