@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import PrivateRoute from "./Components/PrivateRoute";
 import Login from "./Components/Login";
+import FriendsList from './Components/FriendsList';
 
 function App() {
   return (
